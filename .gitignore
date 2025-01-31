@@ -1,0 +1,6 @@
+# Ignore Tmux plugins
+tmux/.config/tmux/plugins/
+
+# Ignore Oh My Zsh
+zsh/.config/zsh/.oh-my-zsh/
+
