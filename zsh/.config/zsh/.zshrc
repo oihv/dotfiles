@@ -97,8 +97,10 @@ source $ZSH/oh-my-zsh.sh
 # User configuration
 # export MANPATH="/usr/local/man:$MANPATH"
 
+ZSH_AUTOSUGGEST_STRATEGY=(history completion)
+
 # You may need to manually set your language environment
-# export LANG=en_US.UTF-8
+export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
  if [[ -n $SSH_CONNECTION ]]; then
@@ -167,6 +169,16 @@ lfcd () {
 }
 bindkey -s '^o' 'lfcd\n'
 
+# Use yazi to also switch directories
+function y() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+	yazi "$@" --cwd-file="$tmp"
+	if cwd="$(command cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+		builtin cd -- "$cwd"
+	fi
+	rm -f -- "$tmp"
+}
+
 autoload edit-command-line; zle -N edit-command-line
 bindkey '^e' edit-command-line
 
@@ -181,6 +193,7 @@ bindkey '^e' edit-command-line
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+alias pomodoro='while true; do meditation_timer.py -p 25 -d 3 -s 1 -e 2 2>/dev/null; sleep 5m; done'
 
 # Fuzzy find and open file in neovim
 # Usage: ff
@@ -203,6 +216,18 @@ fcd() {
     cd "$(dirname "$file")"
   fi
 }
+
+# Fuzzy search through command history with fzf
+fzf-history-widget() {
+  local selected_cmd
+  selected_cmd=$(fc -lnr | fzf --height 40% --reverse --preview="echo {}")
+  if [[ -n "$selected_cmd" ]]; then
+    LBUFFER+="$selected_cmd"  # Insert into current command buffer without executing
+  fi
+  zle reset-prompt
+}
+zle -N fzf-history-widget
+bindkey '^r' fzf-history-widget  # Use Ctrl+R to trigger fuzzy history search
 
 # Add these to your aliases
 alias ff='ff'

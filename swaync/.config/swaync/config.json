@@ -54,7 +54,8 @@
             "label": "󰕾 "
         },
         "backlight": {
-            "label": "󰃟 "
+          "label": "󰃟 ",
+          "device": "amdgpu_bl1"
         },
         "buttons-grid": {
             "actions": [
@@ -85,21 +86,21 @@
 
                 {
                     "label": "󰀟",
-                    "command": "gnome-network-displays"
+                    "command": "vnc_tablet"
                 },
 
                 {
                     "label": "󰈙",
-                    "command": "kitty bash -i -c 'Docs'"
+                    "command": "okular"
                 },
                 {
                     "label": "",
-                    "command": "kitty bash -i -c 'Settings'"
+                    "command": "kitty bash -i -c 'nvim ~/dotfiles/hypr/.config/hypr/hyprland.conf'"
                     
                 },
                 {
                     "label": "",
-                    "command": "kitty bash -i -c 'tasks'"
+                    "command": "kitty bash -i -c 'htop'"
 
                 },
                 {

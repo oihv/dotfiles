@@ -104,8 +104,7 @@ tooltip {
     padding: 0px 5px;
     transition: all .3s ease;
     color:@color7;
-
-
+    background: transparent;
 }
 #battery.charging {
     color: #26A65B;
