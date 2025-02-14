@@ -173,3 +173,8 @@ tooltip {
     padding: 0px 5px;
     transition: all .3s ease; 
 }
+#tray > .needs-attention { /*not working*/
+    animation: none;  /* Disable any animations */
+    color: @color7;
+}
+

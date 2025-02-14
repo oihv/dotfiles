@@ -96,6 +96,8 @@ source $ZSH/oh-my-zsh.sh
 
 # User configuration
 # export MANPATH="/usr/local/man:$MANPATH"
+export TERM=xterm-256color
+
 
 ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 

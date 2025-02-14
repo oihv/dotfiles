@@ -20,6 +20,7 @@
 
 (defsrc
     a    s    d    f    g    h    j    k    l    ;
+    ralt
 )
 
 (defalias
@@ -32,8 +33,17 @@
     sft_k (tap-hold-next-release 160 k rsft)
     alt_l (tap-hold-next-release 160 l lalt)
     met_; (tap-hold-next-release 160 ; rmet)
+
+    qwe (layer-switch qwerty)
+    homerow (layer-switch homerowmods)
 )
 
 (deflayer homerowmods
     @met_a   @alt_s   @sft_d   @ctl_f   g   h   @ctl_j   @sft_k   @alt_l   @met_;
+    @qwe
+)
+
+(deflayer qwerty
+    a   s   d   f   g   h   j   k   l   ;  
+    @homerow
 )
