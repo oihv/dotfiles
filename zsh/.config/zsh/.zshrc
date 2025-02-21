@@ -199,6 +199,7 @@ alias pomodoro='while true; do meditation_timer.py -p 25 -d 3 -s 1 -e 2 2>/dev/n
 
 # Fuzzy find and open file in neovim
 # Usage: ff
+unalias ff 2>/dev/null
 ff() {
   local file
   file=$(fd --type f --hidden --follow --exclude .git --exclude node_modules | fzf --preview 'bat --style=numbers --color=always {}' --preview-window='right:60%')
@@ -210,6 +211,7 @@ ff() {
 
 # Fuzzy find file and cd to its directory
 # Usage: fcd
+unalias fcd 2>/dev/null
 fcd() {
   local file
   file=$(fd --type f --hidden --follow --exclude .git --exclude node_modules | fzf --preview 'bat --style=numbers --color=always {}' --preview-window='right:60%')
@@ -234,6 +236,9 @@ bindkey '^r' fzf-history-widget  # Use Ctrl+R to trigger fuzzy history search
 # Add these to your aliases
 alias ff='ff'
 alias fcd='fcd'
+
+# zoxide
+eval "$(zoxide init --cmd cd zsh)"
 
 # Keybinds
 bindkey '^@' autosuggest-accept
