@@ -8,7 +8,7 @@ export ZSH_CACHE_DIR="$XDG_CACHE_HOME/zsh"
 export DefaultIMModule=fcitx
 export XMODIFIERS=@im=fcitx
 export XMODIFIER=@im=fcitx
-export GTK_IM_MODULE=fcitx
+export GTK_IM_MODULE=wayland
 export QT_IM_MODULE=fcitx
 export GLFW_IM_MODULE=ibus
 
