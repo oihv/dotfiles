@@ -6,8 +6,7 @@ return {
     require("lualine").setup({
       options = {
         icons_enabled = true,
-        theme = "auto",
-        component_separators = "",
+        theme = "pywal",
         section_separators = { left = "", right = "" },
         component_separators = { "", "" },
         disabled_filetypes = {
@@ -26,7 +25,7 @@ return {
       },
       sections = {
         lualine_a = { "mode" },
-        lualine_b = {},
+        lualine_b = { "branch", "diff", "diagnostics" },
         lualine_c = {},
         lualine_x = { "filetype" },
         lualine_y = { "progress" },

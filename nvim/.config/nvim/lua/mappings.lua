@@ -75,6 +75,6 @@ vim.keymap.set("n", "<leader><leader>", function()
   vim.cmd("so")
 end)
 
-vim.keymap.set("n", "<leader>c", "<cmd>CopilotChatOpen<cr>")
+vim.keymap.set("n", "<leader>l", "<cmd>CopilotChatOpen<cr>")
 
 vim.keymap.set("n", "<C-n>", "<cmd>Neotree filesystem reveal left<CR>")

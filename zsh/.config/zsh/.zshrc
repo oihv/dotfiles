@@ -114,6 +114,11 @@ export LANG=en_US.UTF-8
 # Compilation flags
 # export ARCHFLAGS="-arch $(uname -m)"
 
+# Proxy
+export http_proxy=http://127.0.0.1:7897
+export https_proxy=http://127.0.0.1:7897
+export all_proxy=socks5://127.0.0.1:7897
+
 # Luke's config 
 # History in cache directory:
 HISTSIZE=10000
@@ -239,6 +244,9 @@ alias fcd='fcd'
 
 # zoxide
 eval "$(zoxide init --cmd cd zsh)"
+
+# rbenv
+eval "$(rbenv init -)"
 
 # Keybinds
 bindkey '^@' autosuggest-accept
