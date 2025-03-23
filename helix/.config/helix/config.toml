@@ -1,0 +1,5 @@
+theme = "nord-night-transparent"
+
+[keys.normal]
+C-d = ["page_cursor_half_down", "align_view_center"]
+C-u = ["page_cursor_half_up", "align_view_center"]
