@@ -6,9 +6,9 @@ return {
     require("lualine").setup({
       options = {
         icons_enabled = true,
-        theme = "pywal",
-        section_separators = { left = "", right = "" },
-        component_separators = { "", "" },
+        theme = "iceberg_dark",
+        section_separators = { left = " ", right = "" },
+        component_separators = { left = " ", right = "" },
         disabled_filetypes = {
           statusline = {},
           winbar = {},
