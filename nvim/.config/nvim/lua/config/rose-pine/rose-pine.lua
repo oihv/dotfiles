@@ -449,6 +449,8 @@ local function set_highlights()
     SignAdd = { fg = groups.git_add, bg = "NONE" },
     SignChange = { fg = groups.git_change, bg = "NONE" },
     SignDelete = { fg = groups.git_delete, bg = "NONE" },
+    GitSignsAddInline = { fg = groups.git_add, bg = palette.highlight_med },
+    GitSignsDeleteInline = { fg = groups.git_delete, bg = palette.highlight_med },
 
     -- mvllow/modes.nvim
     ModesCopy = { bg = "NONE" },
