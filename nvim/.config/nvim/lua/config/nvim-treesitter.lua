@@ -28,5 +28,5 @@ require("nvim-ts-autotag").setup({
   -- }
 })
 
-package.loaded["rose-pine.palette"] = nil
-require("config.rose-pine.rose-pine").colorscheme()
+-- package.loaded["rose-pine.palette"] = nil
+-- require("config.rose-pine.rose-pine").colorscheme()
