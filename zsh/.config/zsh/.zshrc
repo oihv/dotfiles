@@ -98,8 +98,7 @@ source $ZSH/oh-my-zsh.sh
 # export MANPATH="/usr/local/man:$MANPATH"
 export TERM=xterm-256color
 
-
-ZSH_AUTOSUGGEST_STRATEGY=(history completion)
+ZSH_AUTOSUGGEST_STRATEGY=(history)
 
 # You may need to manually set your language environment
 export LANG=en_US.UTF-8
@@ -165,16 +164,15 @@ echo -ne '\e[5 q' # Use beam shape cursor on startup.
 preexec() { echo -ne '\e[5 q' ;} # Use beam shape cursor for each new prompt.
 
 # Use lf to switch directories and bind it to ctrl-o
-lfcd () {
-    tmp="$(mktemp)"
-    lf -last-dir-path="$tmp" "$@"
-    if [ -f "$tmp" ]; then
-        dir="$(cat "$tmp")"
-        rm -f "$tmp"
-        [ -d "$dir" ] && [ "$dir" != "$(pwd)" ] && cd "$dir"
-    fi
-}
-bindkey -s '^o' 'lfcd\n'
+# lfcd () {
+#     tmp="$(mktemp)"
+#     lf -last-dir-path="$tmp" "$@"
+#     if [ -f "$tmp" ]; then
+#         dir="$(cat "$tmp")"
+#         rm -f "$tmp"
+#         [ -d "$dir" ] && [ "$dir" != "$(pwd)" ] && cd "$dir"
+#     fi
+# }
 
 # Use yazi to also switch directories
 function y() {
@@ -185,6 +183,7 @@ function y() {
 	fi
 	rm -f -- "$tmp"
 }
+bindkey -s '^o' 'y\n'
 
 autoload edit-command-line; zle -N edit-command-line
 bindkey '^e' edit-command-line
@@ -247,6 +246,18 @@ eval "$(zoxide init --cmd cd zsh)"
 
 # rbenv
 eval "$(rbenv init -)"
+export RI_PAGER='nvim +Man!'
+
+# less.sh syntax highlighting
+# export LESSOPEN="| src-hilite-lesspipe.sh %s"
+# export LESS=' -R '
+
+# nvim as pager
+# export MANPAGER="nvim -c 'set ft=man' -" # does not work
+export MANPAGER="nvim +Man!"
+
+# less as pager
+# export MANPAGER='less -R --use-color -Dd+r -Du+b'
 
 # Keybinds
 bindkey '^@' autosuggest-accept
