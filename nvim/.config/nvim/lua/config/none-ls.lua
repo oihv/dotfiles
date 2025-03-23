@@ -5,12 +5,12 @@ local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 null_ls.setup({
   sources = {
     null_ls.builtins.formatting.stylua,
-    null_ls.builtins.completion.spell,
-    -- require("none-ls.diagnostics.eslint"), -- requires none-ls-extras.nvim
+    -- null_ls.builtins.completion.spell,
+    -- require("none-ls.diagnostics.eslint"),  -- requires none-ls-extras.nvim
     null_ls.builtins.formatting.clang_format, -- Formatting
     -- null_ls.builtins.diagnostics.cppcheck, -- Diagnostics
     null_ls.builtins.formatting.rubocop,
-    null_ls.builtins.diagnostics.deno_lint,
+    -- null_ls.builtins.diagnostics.deno_lint,
     -- Add any other linters or diagnostics tools you prefer
   },
   on_attach = function(client, bufnr)
