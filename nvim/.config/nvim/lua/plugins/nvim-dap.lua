@@ -4,10 +4,14 @@ return {
     dependencies = {
       "rcarriga/nvim-dap-ui",
       "nvim-neotest/nvim-nio",
+      "suketa/nvim-dap-ruby",
     },
     config = function()
       local dap = require("dap")
       local dapui = require("dapui")
+
+      require("dap-ruby").setup()
+
       dapui.setup()
 
       dap.listeners.before.attach.dapui_config = function()
@@ -23,6 +27,7 @@ return {
         dapui.close()
       end
 
+      -- Keymaps
       vim.keymap.set("n", "<leader>dt", dap.toggle_breakpoint, {})
       vim.keymap.set("n", "<leader>dc", dap.continue, {})
     end,
