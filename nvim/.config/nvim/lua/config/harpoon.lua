@@ -10,32 +10,32 @@ function M.setup()
   -- Key mappings for Harpoon
   vim.keymap.set("n", "<leader>a", function()
     harpoon:list():add()
-  end)
+  end, { desc = "Add file to harpoon list" })
   vim.keymap.set("n", "<C-e>", function()
     harpoon.ui:toggle_quick_menu(harpoon:list())
-  end)
+  end, { desc = "Open harpoon menu" })
 
   -- Navigate to specific marks in Harpoon list
   vim.keymap.set("n", "<A-h>", function()
     harpoon:list():select(1)
-  end)
+  end, { desc = "Harpoon navigate to list 1" })
   vim.keymap.set("n", "<A-j>", function()
     harpoon:list():select(2)
-  end)
+  end, { desc = "Harpoon navigate to list 2" })
   vim.keymap.set("n", "<A-k>", function()
     harpoon:list():select(3)
-  end)
+  end, { desc = "Harpoon navigate to list 3" })
   vim.keymap.set("n", "<A-l>", function()
     harpoon:list():select(4)
-  end)
+  end, { desc = "Harpoon navigate to list 4" })
 
   -- Toggle previous & next buffers stored within Harpoon list
-  vim.keymap.set("n", "<C-S-P>", function()
+  vim.keymap.set("n", "<A-S-P>", function()
     harpoon:list():prev()
-  end)
-  vim.keymap.set("n", "<C-S-N>", function()
+  end, { desc = "Harpoon move to prev list" })
+  vim.keymap.set("n", "<A-S-N>", function()
     harpoon:list():next()
-  end)
+  end, { desc = "Harpoon move to next list" })
 end
 
 return M
