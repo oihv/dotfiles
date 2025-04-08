@@ -78,3 +78,6 @@ end)
 vim.keymap.set("n", "<leader>l", "<cmd>CopilotChatOpen<cr>")
 
 vim.keymap.set("n", "<C-n>", "<cmd>Neotree filesystem reveal left<CR>")
+
+vim.keymap.set("n", "<leader>cc", "<cmd>CompileOnly<CR>", { desc = "Compile current buffer" })
+vim.keymap.set("n", "<leader>cr", "<cmd>CompileRun<CR>", { desc = "Compile and run current buffer" })

@@ -119,9 +119,9 @@ export LANG=en_US.UTF-8
 # export all_proxy=socks5://127.0.0.1:7897
 
 # Proxy for hiddify
-export http_proxy=http://127.0.0.1:12334
-export https_proxy=http://127.0.0.1:12334
-export all_proxy=socks5://127.0.0.1:12334
+# export http_proxy=http://127.0.0.1:12334
+# export https_proxy=http://127.0.0.1:12334
+# export all_proxy=socks5://127.0.0.1:12334
 
 # Luke's config 
 # History in cache directory:
