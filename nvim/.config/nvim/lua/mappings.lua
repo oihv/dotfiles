@@ -33,7 +33,6 @@ vim.keymap.set("i", "<C-c>", "<Esc>")
 vim.keymap.set("n", "Q", "<nop>")
 vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
 vim.keymap.set("n", "<leader>gf", vim.lsp.buf.format)
-
 -- LSP copy error message
 vim.api.nvim_set_keymap(
   "n",
@@ -52,8 +51,8 @@ function YankDiagnosticError()
   vim.api.nvim_win_close(win_id, true) -- close the floating window by its ID
 end
 
-vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz")
-vim.keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz")
+-- vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz")
+-- vim.keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz")
 vim.keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz")
 vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
 
@@ -68,7 +67,7 @@ vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
 --
 -- vim.keymap.set("n", "<leader>el", 'oif err != nil {<CR>}<Esc>O.logger.Error("error", "error", err)<Esc>F.;i')
 
-vim.keymap.set("n", "<leader>vpp", "<cmd>e ~/.dotfiles/nvim/.config/nvim/lua/theprimeagen/packer.lua<CR>")
+vim.keymap.set("n", "<leader>vpp", "<cmd>e ~/dotfiles/nvim/.config/nvim/init.lua<CR>")
 vim.keymap.set("n", "<leader>mr", "<cmd>CellularAutomaton make_it_rain<CR>")
 
 vim.keymap.set("n", "<leader><leader>", function()
@@ -81,3 +80,22 @@ vim.keymap.set("n", "<C-n>", "<cmd>Neotree filesystem reveal left<CR>")
 
 vim.keymap.set("n", "<leader>cc", "<cmd>CompileOnly<CR>", { desc = "Compile current buffer" })
 vim.keymap.set("n", "<leader>cr", "<cmd>CompileRun<CR>", { desc = "Compile and run current buffer" })
+
+-- local ls = require("luasnip")
+-- vim.keymap.set({ "i", "s" }, "<C-k>", function()
+--   if ls.expand_or_jumpable() then
+--     ls.expand_or_jump()
+--   end
+-- end, { silent = true })
+--
+-- vim.keymap.set({ "i", "s" }, "<C-j>", function()
+--   if ls.jumpable(-1) then
+--     ls.jump(-1)
+--   end
+-- end, { silent = true })
+-- vim.keymap.set({ "i", "s" }, "<C-L>", function()
+--   ls.jump(1)
+-- end, { silent = true })
+-- vim.keymap.set({ "i", "s" }, "<C-J>", function()
+--   ls.jump(-1)
+-- end, { silent = true })

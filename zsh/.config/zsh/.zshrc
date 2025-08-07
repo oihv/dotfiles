@@ -6,7 +6,7 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 
 # If you come from bash you might have to change your $PATH.
-export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
+export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$HOME/.cargo/bin:$PATH
 
 # Path to your Oh My Zsh installation.
 export ZSH="$ZDOTDIR/.oh-my-zsh"
@@ -96,7 +96,7 @@ source $ZSH/oh-my-zsh.sh
 
 # User configuration
 # export MANPATH="/usr/local/man:$MANPATH"
-export TERM=xterm-256color
+export TERM=xterm-kitty
 
 ZSH_AUTOSUGGEST_STRATEGY=(history)
 
@@ -252,6 +252,10 @@ eval "$(zoxide init --cmd cd zsh)"
 # rbenv
 eval "$(rbenv init -)"
 export RI_PAGER='nvim +Man!'
+
+# Emscripten sdk
+export EMSDK_QUIET=1
+source /usr/lib/emsdk/emsdk_env.sh
 
 # less.sh syntax highlighting
 # export LESSOPEN="| src-hilite-lesspipe.sh %s"

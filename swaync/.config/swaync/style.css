@@ -170,7 +170,7 @@
 .control-center {
     background: @bg;
     color: @text;
-    border-radius: 0px 10px 10px 0px;
+    border-radius: 10px;
     border:none;
     box-shadow: 1px 1px 5px rgba(0, 0, 0, .65);
 }

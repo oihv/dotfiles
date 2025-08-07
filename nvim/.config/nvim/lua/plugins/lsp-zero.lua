@@ -11,6 +11,7 @@ return {
     dependencies = {
       { "hrsh7th/cmp-buffer" },
       { "hrsh7th/cmp-cmdline" },
+      { "saadparwaiz1/cmp_luasnip" },
     },
 
     event = { "InsertEnter", "CmdlineEnter" },
@@ -20,17 +21,46 @@ return {
       cmp.setup({
         sources = {
           { name = "nvim_lsp" },
+          { name = "path" },
           { name = "buffer" }, -- Source for buffer words2
         },
         mapping = cmp.mapping.preset.insert({
           ["<C-Space>"] = cmp.mapping.complete(),
           ["<C-u>"] = cmp.mapping.scroll_docs(-4),
           ["<C-d>"] = cmp.mapping.scroll_docs(4),
+          -- ["<C-J>"] = cmp.mapping(function(fallback)
+          --   if cmp.visible() then
+          --     cmp.select_next_item()
+          --   elseif ls.locally_jumpable(1) then
+          --     ls.jump(1)
+          --   else
+          --     fallback()
+          --   end
+          -- end, { "i", "s" }),
+          --
+          -- ["<C-K>"] = cmp.mapping(function(fallback)
+          --   if cmp.visible() then
+          --     cmp.select_prev_item()
+          --   elseif ls.locally_jumpable(-1) then
+          --     ls.jump(-1)
+          --   else
+          --     fallback()
+          --   end
+          -- end, { "i", "s" }),
           ["<CR>"] = cmp.mapping.confirm({ select = false }),
+          ["<C-n>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
+          ["<C-p>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
+          ["<C-y>"] = cmp.mapping(
+            cmp.mapping.confirm({
+              behavior = cmp.ConfirmBehavior.Insert,
+              select = true,
+            }),
+            { "i", "c" }
+          ),
         }),
         snippet = {
           expand = function(args)
-            vim.snippet.expand(args.body)
+            require("luasnip").lsp_expand(args.body)
           end,
         },
         window = {
@@ -39,6 +69,30 @@ return {
         },
       })
 
+      -- Switch between arguments when autocompleting a function call
+      local ls = require("luasnip")
+      vim.keymap.set({ "i", "s" }, "<C-k>", function()
+        if ls.expand_or_jumpable() then
+          ls.expand_or_jump()
+        end
+      end, { silent = true })
+
+      vim.keymap.set({ "i", "s" }, "<C-j>", function()
+        if ls.jumpable(-1) then
+          ls.jump(-1)
+        end
+      end, { silent = true })
+      vim.keymap.set({ "i", "s" }, "<C-Up>", function()
+        if ls.expand_or_jumpable() then
+          ls.expand_or_jump()
+        end
+      end, { silent = true })
+
+      vim.keymap.set({ "i", "s" }, "<C-Down>", function()
+        if ls.jumpable(-1) then
+          ls.jump(-1)
+        end
+      end, { silent = true })
       -- `/` cmdline setup.
       cmp.setup.cmdline("/", {
         mapping = cmp.mapping.preset.cmdline(),
